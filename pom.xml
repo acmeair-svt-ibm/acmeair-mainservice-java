@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent><!--required parent POM-->
+        <groupId>dev.appsody</groupId>
+        <artifactId>java-openliberty</artifactId>
+        <version>[0.2, 0.3)</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>dev.appsody.starter.java-openliberty</groupId>
+    <artifactId>acmeair-mainservice-java</artifactId>
+    <version>3.3</version>
+    <packaging>war</packaging>
+
+    <dependencies>
+
+        <!-- Aggregate of MicroProfile APIs -->
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>3.3</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+         <groupId>com.ibm.db2.jcc</groupId>
+         <artifactId>db2jcc</artifactId>
+         <version>db2jcc4</version>
+        </dependency>      
+        <!-- Aggregate of Jakarta EE APIs -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>8.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.0.1</version>
+          <executions>
+              <execution>
+                  <id>copy-resource</id>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>copy-dependencies</goal>
+                  </goals>
+                  <configuration>
+                  <stripVersion>true</stripVersion>
+                  <outputDirectory>/project/user-app/target/liberty/wlp/usr/servers/defaultServer/resources/db2jars/</outputDirectory>
+                  <includeArtifactIds>db2jcc</includeArtifactIds>
+              </configuration>
+              </execution>
+          </executions>
+         </plugin>                      
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.maven-war-plugin}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <packagingExcludes>pom.xml</packagingExcludes>
+                </configuration>
+            </plugin>
+            <!-- Enable liberty-maven plugin -->
+            <plugin>
+                <groupId>io.openliberty.tools</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <configuration>
+                    <stripVersion>true</stripVersion>
+                    <serverStartTimeout>120</serverStartTimeout>
+                    <configFile>src/main/liberty/config/server.xml</configFile>
+                    <jvmOptions>
+                     <param>-Xmx512m</param>
+                     <param>-verbose:gc</param>
+                     <param>-Xdump:heap</param>
+                     <param>-Xaggressive</param>
+                     <param>-Xverbosegclog:/logs/verbosegc.log</param>
+                     <param>-DmyOL=1</param>                        
+                    </jvmOptions>                        
+                    <bootstrapProperties>
+                        <default.http.port>${http.port}</default.http.port>
+                        <default.https.port>${https.port}</default.https.port>
+                        <app.context.root>${app.name}</app.context.root>
+                    </bootstrapProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
