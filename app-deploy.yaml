@@ -12,7 +12,7 @@ spec:
   expose: true
   env:
   - name: SECURE_SERVICE_CALLS
-    value: false
+    value: 'false'
   service:
     type: NodePort
     port: 9080
