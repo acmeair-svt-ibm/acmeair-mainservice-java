@@ -80,9 +80,6 @@
                     <stripVersion>true</stripVersion>
                     <serverStartTimeout>120</serverStartTimeout>
                     <configFile>src/main/liberty/config/server.xml</configFile>
-                    <systemPropertyVariables>
-                     <SECURE_SERVICE_CALLS>false</SECURE_SERVICE_CALLS>
-                    </systemPropertyVariables>
                     <jvmOptions>
                      <param>-Xmx512m</param>
                      <param>-verbose:gc</param>

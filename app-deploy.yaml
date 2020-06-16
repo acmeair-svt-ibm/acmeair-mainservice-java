@@ -10,6 +10,9 @@ spec:
   applicationImage: stackaa-main 
   createKnativeService: false
   expose: true
+  env:
+  - name: SECURE_SERVICE_CALLS
+    value: false
   service:
     type: NodePort
     port: 9080
