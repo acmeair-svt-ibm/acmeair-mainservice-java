@@ -57,8 +57,8 @@ function login() {
 			login: userString,
 			password: document.getElementById('password').value
 		},
-		//url: window.location.protocol+ '//' + window.location.host + '/auth/login',
-		url: window.location.protocol+ '//stackaa-auth-kabanero.apps.bph44c1.cp.fyre.ibm.com/auth/login',
+		url: window.location.protocol+ '//' + window.location.host + '/auth/login',
+		//url: window.location.protocol+ '//stackaa-auth-kabanero.apps.bph44c1.cp.fyre.ibm.com/auth/login',
 		load: function(response, ioArgs) {
 			hideLoginWaitDialog();
 			if (response != 'logged in') {
