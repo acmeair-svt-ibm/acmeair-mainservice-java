@@ -86,7 +86,7 @@
                      <param>-Xdump:heap</param>
                      <param>-Xaggressive</param>
                      <param>-Xverbosegclog:/logs/verbosegc.log</param>
-                     <param>-DmyOL=2</param>                        
+                     <param>-DmyOL=1</param>                        
                     </jvmOptions>                        
                     <bootstrapProperties>
                         <default.http.port>${http.port}</default.http.port>
