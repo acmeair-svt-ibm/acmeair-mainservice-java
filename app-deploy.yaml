@@ -13,6 +13,10 @@ spec:
   env:
   - name: SECURE_SERVICE_CALLS
     value: 'false'
+  - name: USERNAME
+    value: admin
+  - name: PASSWORD
+    value: password
   service:
     type: NodePort
     port: 9080
