@@ -2,12 +2,12 @@ apiVersion: appsody.dev/v1beta1
 kind: AppsodyApplication
 metadata:
   labels:
-    image.opencontainers.org/title: stackaa-main
+    image.opencontainers.org/title: acmeair-main
     stack.appsody.dev/id: java-openliberty
-  name: stackaa-main
+  name: acmeair-main
   namespace: acmeair
 spec:
-  applicationImage: stackaa-main 
+  applicationImage: acmeair-main 
   createKnativeService: false
   expose: true
   env:
