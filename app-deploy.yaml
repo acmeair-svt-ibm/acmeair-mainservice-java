@@ -5,7 +5,7 @@ metadata:
     image.opencontainers.org/title: stackaa-main
     stack.appsody.dev/id: java-openliberty
   name: stackaa-main
-  namespace: kabanero
+  namespace: acmeair
 spec:
   applicationImage: stackaa-main 
   createKnativeService: false
