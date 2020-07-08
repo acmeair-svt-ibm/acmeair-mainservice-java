@@ -20,9 +20,15 @@ spec:
   service:
     type: NodePort
     port: 9080
-    provides:
-      category: openapi
-      context: /acmeair
+    consumes:
+      - category: openapi
+        name: stackaa-auth
+      - category: openapi
+        name: stackaa-booking
+      - category: openapi
+        name: stackaa-customer
+      - category: openapi
+        name: stackaa-flight
     annotations:
       prometheus.io/scrape: 'true'
   readinessProbe:
