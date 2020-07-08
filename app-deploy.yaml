@@ -21,18 +21,18 @@ spec:
     type: NodePort
     port: 9080
     consumes:
-      - category: openapi
-        name: stackaa-auth
-        namespace: acmeair
-      - category: openapi
-        name: stackaa-booking
-        namespace: acmeair
-      - category: openapi
-        name: stackaa-customer
-        namespace: acmeair
-      - category: openapi
-        name: stackaa-flight
-        namespace: acmeair
+    - category: openapi
+      name: stackaa-auth
+      namespace: acmeair
+    - category: openapi
+      name: stackaa-booking
+      namespace: acmeair
+    - category: openapi
+      name: stackaa-customer
+      namespace: acmeair
+    - category: openapi
+      name: stackaa-flight
+      namespace: acmeair
     annotations:
       prometheus.io/scrape: 'true'
   readinessProbe:
