@@ -20,6 +20,9 @@ spec:
   service:
     type: NodePort
     port: 9080
+    provides:
+      category: openapi
+      context: /acmeair
     annotations:
       prometheus.io/scrape: 'true'
   readinessProbe:
