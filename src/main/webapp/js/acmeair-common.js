@@ -57,7 +57,7 @@ function login() {
 			login: userString,
 			password: document.getElementById('password').value
 		},
-		url: window.location.protocol+ '//' + window.location.host + '/auth/login',
+		url: 'http://stackaa-auth.acmeair.svc.cluster.local:9080' + '/auth/login',
 		load: function(response, ioArgs) {
 			hideLoginWaitDialog();
 			if (response != 'logged in') {
