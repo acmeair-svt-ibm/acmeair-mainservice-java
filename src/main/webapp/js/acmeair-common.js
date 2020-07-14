@@ -47,13 +47,28 @@ function updateLoggedInUserWelcome() {
 	}
 }
 
-var fr = new FileReader()
-var authUrl = fr.readAsText('/acmeair//stackaa-auth/url');
+function getAuthUrl() {
+	dojo.xhrGet({
+		url: '/acmeair/stackaa-auth/url',
+		handleAs: 'text',
+		load: function(response) {
+			return response;
+		},
+		error: function(response) {
+			console.log(response);
+		}
+	});
+}
 
 function login() {
 	hideLoginDialog();
 	showLoginWaitDialog();
-	console.log(authUrl);
+	
+	var deferred = getAuthUrl();
+	deferred.then(function(response) {
+		console.log(response);
+	})
+
 	var userString = document.getElementById('userId').value;
 	dojo.xhrPost({
 		content : {
