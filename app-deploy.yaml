@@ -23,12 +23,16 @@ spec:
     consumes:
     - category: openapi
       name: stackaa-auth
+      mountPath: /acmeair
     - category: openapi
       name: stackaa-booking
+      mountPath: /acmeair
     - category: openapi
       name: stackaa-customer
+      mountPath: /acmeair
     - category: openapi
       name: stackaa-flight
+      mountPath: /acmeair
     annotations:
       prometheus.io/scrape: 'true'
   readinessProbe:
