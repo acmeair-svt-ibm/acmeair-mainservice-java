@@ -106,7 +106,7 @@
     	});
     	
        	dojo.xhrGet({
-			url: window.location.protocol+ '//' + window.location.host + '/flight/config/countFlights',
+			url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/config/countFlights',
 			handleAs: "json",
 			load: function(response, ioArgs) {			    	
 		    	document.getElementById('flightData').innerHTML=response;
@@ -117,7 +117,7 @@
     	});
 	 
        	dojo.xhrGet({
-			url: window.location.protocol+ '//' + window.location.host + '/flight/config/countFlightSegments',
+			url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/config/countFlightSegments',
 			handleAs: "json",
 			load: function(response, ioArgs) {			    
 		    	document.getElementById('flightSegmentData').innerHTML=response;
@@ -129,7 +129,7 @@
        	
        	
     	dojo.xhrGet({
-			url: window.location.protocol+ '//' + window.location.host + '/booking/config/countBookings',
+			url: 'http://stackaa-booking.acmeair.svc.cluster.local:9080/booking' + '/config/countBookings',
 			handleAs: "json",
 			load: function(response, ioArgs) {	
 		    	document.getElementById('bookingData').innerHTML=response;
@@ -141,7 +141,7 @@
     	
     	dojo.xhrGet({
     		
-			url: window.location.protocol+ '//' + window.location.host + '/flight/config/countAirports',
+			url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/config/countAirports',
 			handleAs: "json",
 			load: function(response, ioArgs) {	
 		    	document.getElementById('airportData').innerHTML=response;

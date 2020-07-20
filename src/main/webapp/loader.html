@@ -60,7 +60,7 @@
 		});
     	
     	dojo.xhrGet({
-        url: window.location.protocol+ '//' + window.location.host + '/flight/loader/query',
+        url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/loader/query',
         handleAs: "text",
         load: function(response, ioArgs) {
             updateFlightFormData(response);
@@ -104,7 +104,7 @@
     	  content : {
     	    daysToLoad: dijit.byId('flightDaysInput').value
           },
-    		url: window.location.protocol+ '//' + window.location.host + '/flight/loader/load',
+    		url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/loader/load',
     		load: function(response, ioArgs) {
     			hideWaitDialog();
     			alert('Flight Database Loaded, response: ' + response);
@@ -120,7 +120,7 @@
     function clearBookingDB() {
     	showWaitDialog();
     	dojo.xhrGet({
-    		url: window.location.protocol+ '//' + window.location.host + '/booking/loader/load',
+    		url: 'http://stackaa-booking.acmeair.svc.cluster.local:9080/booking' + '/loader/load',
     		load: function(response, ioArgs) {
     			hideWaitDialog();
     			alert('Booking Database Cleared, response: ' + response);
