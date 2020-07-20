@@ -47,27 +47,10 @@ function updateLoggedInUserWelcome() {
 	}
 }
 
-// function getAuthUrl() {
-// 	dojo.xhrGet({
-// 		url: 'file:/acmeair/stackaa-auth/url',
-// 		handleAs: 'text',
-// 		load: function(response) {
-// 			return response;
-// 		},
-// 		error: function(response) {
-// 			console.log(response);
-// 		}
-// 	});
-// }
 
 function login() {
 	hideLoginDialog();
 	showLoginWaitDialog();
-	
-	// var deferred = getAuthUrl();
-	// deferred.then(function(response) {
-	// 	console.log(response);
-	// })
 
 	var userString = document.getElementById('userId').value;
 	dojo.xhrPost({
@@ -75,7 +58,7 @@ function login() {
 			login: userString,
 			password: document.getElementById('password').value
 		},
-		url: 'http://stackaa-auth.acmeair.svc.cluster.local:9080/auth' + '/login',
+		url: 'http://stackaa-auth-acmeair.apps.acme42.cp.fyre.ibm.com/auth' + '/login',
 		load: function(response, ioArgs) {
 			hideLoginWaitDialog();
 			if (response != 'logged in') {
