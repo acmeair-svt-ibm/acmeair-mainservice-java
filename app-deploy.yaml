@@ -1,13 +1,60 @@
-apiVersion: appsody.dev/v1beta1
-kind: AppsodyApplication
+apiVersion: openliberty.io/v1beta1
+kind: OpenLibertyApplication
 metadata:
+  annotations:
+    architecture: x86_64
+    authoritative-source-url: registry.access.redhat.com
+    build-date: 2020-03-31T14:54:13.907559
+    commit.stack.appsody.dev/contextDir: /incubator/java-openliberty
+    commit.stack.appsody.dev/date: Mon Jun 29 13:23:07 2020 -0500
+    commit.stack.appsody.dev/message: Update stack.yaml
+    description: Eclipse MicroProfile & Jakarta EE on Open Liberty & OpenJ9 using
+      Maven
+    distribution-scope: public
+    image.opencontainers.org/created: "2020-07-13T16:05:44-04:00"
+    k8s.io/description: The Universal Base Image is designed and engineered to be
+      the base layer for all of your containerized applications, middleware and utilities.
+      This base image is freely redistributable, but Red Hat only supports Red Hat
+      technologies through subscriptions for Red Hat products. This image is maintained
+      by Red Hat and updated regularly.
+    k8s.io/display-name: Red Hat Universal Base Image 8
+    maintainer: Red Hat, Inc.
+    name: java-openliberty
+    openshift.io/expose-services: ""
+    openshift.io/tags: base rhel8
+    redhat.com/build-host: cpt-1007.osbs.prod.upshift.rdu2.redhat.com
+    redhat.com/component: ubi8-container
+    redhat.com/license_terms: https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI
+    release: "408"
+    stack.appsody.dev/authors: Mike Andrasak <uberskigeek>, Andy Mauer <ajm01>, Scott
+      Kurz <scottkurz>, Adam Wisniewski <awisniew90>
+    stack.appsody.dev/configured: default-route-openshift-image-registry.apps.acme42.cp.fyre.ibm.com/kabanero/java-openliberty:0.2
+    stack.appsody.dev/created: "2020-07-08T15:54:33Z"
+    stack.appsody.dev/description: Eclipse MicroProfile & Jakarta EE on Open Liberty
+      & OpenJ9 using Maven
+    stack.appsody.dev/digest: sha256:19f3fd472cc19f97c9b3261612762d9d351b9cc9dc05aa5694ebbb1e48fdee10
+    stack.appsody.dev/documentation: https://github.ibm.com/acmeair-svt/stack-hub/tree/master/incubator/java-openliberty/README.md
+    stack.appsody.dev/licenses: Apache-2.0
+    stack.appsody.dev/revision: 44795b8a55f65c487972f8d91c4a1ffb7fff0a11-not-pushed
+    stack.appsody.dev/source: https://github.ibm.com/acmeair-svt/stack-hub/tree/master/incubator/java-openliberty/image
+    stack.appsody.dev/tag: default-route-openshift-image-registry.apps.acme42.cp.fyre.ibm.com/kabanero/java-openliberty:0.2.12
+    stack.appsody.dev/title: Open Liberty
+    stack.appsody.dev/url: https://github.ibm.com/acmeair-svt/stack-hub/tree/master/incubator/java-openliberty
+    summary: Open Liberty
+    url: https://access.redhat.com/containers/#/registry.access.redhat.com/ubi8/images/8.1-408
+    vcs-ref: 26f36bfa3e3a04c8c866b250924c1aefc34f01c9
+    vcs-type: git
+    vendor: Open Liberty
+    version: 0.2.12
+  creationTimestamp: null
   labels:
     image.opencontainers.org/title: stackaa-main
     stack.appsody.dev/id: java-openliberty
+    stack.appsody.dev/version: 0.2.12
   name: stackaa-main
   namespace: acmeair
 spec:
-  applicationImage: stackaa-main 
+  applicationImage: stackaa-main
   createKnativeService: false
   expose: true
   env:
@@ -17,9 +64,24 @@ spec:
     value: admin
   - name: PASSWORD
     value: password
+  livenessProbe:
+    failureThreshold: 12
+    httpGet:
+      path: /health/live
+      port: 9080
+    initialDelaySeconds: 60
+    periodSeconds: 2
+  readinessProbe:
+    failureThreshold: 12
+    httpGet:
+      path: /health/ready
+      port: 9080
+    initialDelaySeconds: 60
+    periodSeconds: 2
+    timeoutSeconds: 1
   service:
-    type: NodePort
-    port: 9080
+    annotations:
+      prometheus.io/scrape: "true"
     consumes:
     - category: openapi
       name: stackaa-auth
@@ -37,22 +99,6 @@ spec:
       name: stackaa-flight
       namespace: acmeair
       mountPath: /acmeair
-    annotations:
-      prometheus.io/scrape: 'true'
-  readinessProbe:
-    failureThreshold: 12
-    httpGet:
-      path: /health/ready
-      port: 9080
-    initialDelaySeconds: 60
-    periodSeconds: 2
-  livenessProbe:
-    failureThreshold: 12
-    httpGet:
-      path: /health/live
-      port: 9080
-    initialDelaySeconds: 60
-    periodSeconds: 2
-  expose: true
-  stack: java-openliberty
+    port: 9080
+    type: NodePort
   version: 1.0.0
