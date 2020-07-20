@@ -94,7 +94,7 @@
     	var airportCodeMapping, booking, customer, customerSession, flight, flightSegment;
 
     	dojo.xhrGet({
-			url: window.location.protocol+ '//' + window.location.host + '/customer/config/countCustomers',
+			url: 'http://stackaa-customer.acmeair.svc.cluster.local:9080/customer' +  '/config/countCustomers',
 			handleAs: "json",
 			load: function(response, ioArgs) {	
 		    	//alert("Response: " + response);

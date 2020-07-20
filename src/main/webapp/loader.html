@@ -49,7 +49,7 @@
  
     function loadLoaderConfigData() {
     	dojo.xhrGet({
-			url: window.location.protocol+ '//' + window.location.host + '/customer/loader/query',
+			url: 'http://stackaa-customer.acmeair.svc.cluster.local:9080/customer'+ '/loader/query',
 			handleAs: "text",
 			load: function(response, ioArgs) {
 				updateFormData(response);
@@ -86,7 +86,7 @@
     		content : {
     			numCustomers: dijit.byId('customerSizeInput').value
     		},
-    		url: window.location.protocol+ '//' + window.location.host + '/customer/loader/load',
+    		url: 'http://stackaa-customer.acmeair.svc.cluster.local:9080/customer' + '/loader/load',
     		load: function(response, ioArgs) {
     			hideWaitDialog();
     			alert('Customer Database Loaded, response: ' + response);
