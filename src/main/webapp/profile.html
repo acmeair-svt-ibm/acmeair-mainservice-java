@@ -119,7 +119,7 @@
 		}
     	
 		dojo.xhrPost({
-			url: 'http://stackaa-customer.acmeair.svc.cluster.local:9080/customer' +  '/byid/' + userid,
+			url: 'http://stackaa-customer.acmeair.svc.cluster.local:9080/customer' + '/byid/' + userid,
 			postData : dojo.toJson(customerData),
 			handleAs: "json",
 			headers: { "Content-Type": "application/json",
