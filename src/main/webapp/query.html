@@ -61,7 +61,7 @@
 				returnDate: returnDate,
 				oneWay: oneWayChecked
 			},
-			url: window.location.protocol+ '//' + window.location.host + '/flight/queryflights',
+			url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/queryflights',
 			handleAs: "json",
 			load: function(response, ioArgs) {
 				if (response.tripFlights.length == 0) {
@@ -236,7 +236,7 @@
 		
 		dojo.xhrPost({
 			content : xhrContent,
-			url: window.location.protocol+ '//' + window.location.host + '/booking/bookflights',
+			url: 'http://stackaa-booking.acmeair.svc.cluster.local:9080/booking' + '/bookflights',
 			handleAs: "json",
 			headers: {
                 "Authorization" : "Bearer " + dojo.cookie("jwt_token")
