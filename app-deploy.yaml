@@ -57,6 +57,9 @@ spec:
   applicationImage: stackaa-main
   createKnativeService: false
   expose: true
+  route:
+      host: acmeair-host.com
+      path: "/acmeair"
   env:
   - name: SECURE_SERVICE_CALLS
     value: 'false'
