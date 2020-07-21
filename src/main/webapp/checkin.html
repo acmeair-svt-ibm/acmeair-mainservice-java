@@ -48,7 +48,7 @@
 		    	var grid, store, dataStore;
 		    	
 		    	dojo.xhrGet({
-					url: 'http://stackaa-booking.acmeair.svc.cluster.local:9080/booking' + "/byuser/" + dojo.cookie("loggedinuser"),
+					url: 'http://stackaa-booking-acmeair.apps.acme42.cp.fyre.ibm.com/booking' + "/byuser/" + dojo.cookie("loggedinuser"),
 					handleAs: "json",
 					headers: {
 	                    "Authorization" : "Bearer " + dojo.cookie("jwt_token")
@@ -161,7 +161,7 @@
 				
 				dojo.xhrPost({
 					content : xhrContent,
-					url : 'http://stackaa-booking.acmeair.svc.cluster.local:9080/booking' + '/cancelbooking',
+					url : 'http://stackaa-booking-acmeair.apps.acme42.cp.fyre.ibm.com/booking' + '/cancelbooking',
 					headers: {
 	                    "Authorization" : "Bearer " + dojo.cookie("jwt_token")
 	                },

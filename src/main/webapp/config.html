@@ -50,7 +50,7 @@
     	var grid, store, dataStore;
     	
     	dojo.xhrGet({
-			url: window.location.protocol+ '//' + window.location.host + url1 + url2 + '/config/runtime',
+			url: url1 + url2 + '/config/runtime',
 			handleAs: "json",
 			load: function(response, ioArgs) {
 				var theData = { items : response };
@@ -77,7 +77,7 @@
     	var grid, store, dataStore;
     	
     	dojo.xhrGet({
-			url: window.location.protocol+ '//' + window.location.host + url1 + url2 +'/config/activeDataService',
+			url: url1 + url2 +'/config/activeDataService',
 			handleAs: "text",
 			load: function(response, ioArgs) {	
 		    	document.getElementById('activeServiceLoc_'+service).innerHTML=response;		    	
@@ -94,7 +94,7 @@
     	var airportCodeMapping, booking, customer, customerSession, flight, flightSegment;
 
     	dojo.xhrGet({
-			url: 'http://stackaa-customer.acmeair.svc.cluster.local:9080/customer' +  '/config/countCustomers',
+			url: 'http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer' +  '/config/countCustomers',
 			handleAs: "json",
 			load: function(response, ioArgs) {	
 		    	//alert("Response: " + response);
@@ -106,7 +106,7 @@
     	});
     	
        	dojo.xhrGet({
-			url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/config/countFlights',
+			url: 'http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight' + '/config/countFlights',
 			handleAs: "json",
 			load: function(response, ioArgs) {			    	
 		    	document.getElementById('flightData').innerHTML=response;
@@ -117,7 +117,7 @@
     	});
 	 
        	dojo.xhrGet({
-			url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/config/countFlightSegments',
+			url: 'http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight' + '/config/countFlightSegments',
 			handleAs: "json",
 			load: function(response, ioArgs) {			    
 		    	document.getElementById('flightSegmentData').innerHTML=response;
@@ -129,7 +129,7 @@
        	
        	
     	dojo.xhrGet({
-			url: 'http://stackaa-booking.acmeair.svc.cluster.local:9080/booking' + '/config/countBookings',
+			url: 'http://stackaa-booking-acmeair.apps.acme42.cp.fyre.ibm.com/booking' + '/config/countBookings',
 			handleAs: "json",
 			load: function(response, ioArgs) {	
 		    	document.getElementById('bookingData').innerHTML=response;
@@ -141,7 +141,7 @@
     	
     	dojo.xhrGet({
     		
-			url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/config/countAirports',
+			url: 'http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight' + '/config/countAirports',
 			handleAs: "json",
 			load: function(response, ioArgs) {	
 		    	document.getElementById('airportData').innerHTML=response;
@@ -242,14 +242,14 @@
           </table>
 			
 			<script type="text/javascript">
-				getRuntimeInformation('auth','/auth','');
+				getRuntimeInformation('auth','http://stackaa-auth-acmeair.apps.acme42.cp.fyre.ibm.com/auth','');
 				
-				getRuntimeInformation('booking','/booking','');
-				getActiveDataServiceInfo('booking','/booking','');
-				getRuntimeInformation('customer','','/customer');
-				getActiveDataServiceInfo('customer','','/customer');
-				getRuntimeInformation('flight','/flight','');
-				getActiveDataServiceInfo('flight','/flight','');
+				getRuntimeInformation('booking','http://stackaa-booking-acmeair.apps.acme42.cp.fyre.ibm.com/booking','');
+				getActiveDataServiceInfo('booking','http://stackaa-booking-acmeair.apps.acme42.cp.fyre.ibm.com/booking','');
+				getRuntimeInformation('customer','','http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer');
+				getActiveDataServiceInfo('customer','','http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer');
+				getRuntimeInformation('flight','http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight','');
+				getActiveDataServiceInfo('flight','http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight','');
 			</script>
 	
 			<h2>Auth Service </h2>	 

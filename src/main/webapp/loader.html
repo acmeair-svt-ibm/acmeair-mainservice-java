@@ -49,7 +49,7 @@
  
     function loadLoaderConfigData() {
     	dojo.xhrGet({
-			url: 'http://stackaa-customer.acmeair.svc.cluster.local:9080/customer'+ '/loader/query',
+			url: 'http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer'+ '/loader/query',
 			handleAs: "text",
 			load: function(response, ioArgs) {
 				updateFormData(response);
@@ -60,7 +60,7 @@
 		});
     	
     	dojo.xhrGet({
-        url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/loader/query',
+        url: 'http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight' + '/loader/query',
         handleAs: "text",
         load: function(response, ioArgs) {
             updateFlightFormData(response);
@@ -86,7 +86,7 @@
     		content : {
     			numCustomers: dijit.byId('customerSizeInput').value
     		},
-    		url: 'http://stackaa-customer.acmeair.svc.cluster.local:9080/customer' + '/loader/load',
+    		url: 'http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer' + '/loader/load',
     		load: function(response, ioArgs) {
     			hideWaitDialog();
     			alert('Customer Database Loaded, response: ' + response);
@@ -104,7 +104,7 @@
     	  content : {
     	    daysToLoad: dijit.byId('flightDaysInput').value
           },
-    		url: 'http://stackaa-flight.acmeair.svc.cluster.local:9080/flight' + '/loader/load',
+    		url: 'http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight' + '/loader/load',
     		load: function(response, ioArgs) {
     			hideWaitDialog();
     			alert('Flight Database Loaded, response: ' + response);
@@ -120,7 +120,7 @@
     function clearBookingDB() {
     	showWaitDialog();
     	dojo.xhrGet({
-    		url: 'http://stackaa-booking.acmeair.svc.cluster.local:9080/booking' + '/loader/load',
+    		url: 'http://stackaa-booking-acmeair.apps.acme42.cp.fyre.ibm.com/booking' + '/loader/load',
     		load: function(response, ioArgs) {
     			hideWaitDialog();
     			alert('Booking Database Cleared, response: ' + response);
