@@ -161,7 +161,7 @@
 				
 				dojo.xhrPost({
 					content : xhrContent,
-					url : window.location.protocol+ '//' + window.location.host + '/booking/cancelbooking',
+					url : 'http://stackaa-booking.acmeair.svc.cluster.local:9080/booking' + '/cancelbooking',
 					headers: {
 	                    "Authorization" : "Bearer " + dojo.cookie("jwt_token")
 	                },
