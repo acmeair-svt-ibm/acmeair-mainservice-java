@@ -58,7 +58,7 @@ spec:
   createKnativeService: false
   expose: true
   route:
-      host: acmeair.apps.acmeair44.cp.fyre.ibm.com
+      host: aa-acmeair.apps.acmeair44.cp.fyre.ibm.com
       path: "/acmeair"
   env:
   - name: SECURE_SERVICE_CALLS
