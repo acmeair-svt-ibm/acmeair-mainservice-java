@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dijit/themes/claro/claro.css">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dijit/themes/dijit.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  
+
   <script type="text/javascript" src="js/acmeair-common.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
 
@@ -50,7 +50,7 @@
     	var grid, store, dataStore;
     	
     	dojo.xhrGet({
-			url: url1 + url2 + '/config/runtime',
+			url: window.location.protocol+ '//' + window.location.host + url1 + url2 + '/config/runtime',
 			handleAs: "json",
 			load: function(response, ioArgs) {
 				var theData = { items : response };
@@ -59,9 +59,7 @@
 				    for (var i = 0; i < itemLength; i++){
 				    	if (i>0) tableData+=','
 						tableData += ''+theData.items[i].description+'';		
-
 				    }
-
     			document.getElementById('runtimeLoc_'+service).innerHTML=tableData;
 				return false;				
 			},
@@ -77,7 +75,7 @@
     	var grid, store, dataStore;
     	
     	dojo.xhrGet({
-			url: url1 + url2 +'/config/activeDataService',
+			url: window.location.protocol+ '//' + window.location.host + url1 + url2 +'/config/activeDataService',
 			handleAs: "text",
 			load: function(response, ioArgs) {	
 		    	document.getElementById('activeServiceLoc_'+service).innerHTML=response;		    	
@@ -92,9 +90,8 @@
     function getDBSizes() {
     	var grid, store, dataStore;
     	var airportCodeMapping, booking, customer, customerSession, flight, flightSegment;
-
     	dojo.xhrGet({
-			url: 'http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer' +  '/config/countCustomers',
+			url: window.location.protocol+ '//' + window.location.host + '/customer/config/countCustomers',
 			handleAs: "json",
 			load: function(response, ioArgs) {	
 		    	//alert("Response: " + response);
@@ -106,7 +103,7 @@
     	});
     	
        	dojo.xhrGet({
-			url: 'http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight' + '/config/countFlights',
+			url: window.location.protocol+ '//' + window.location.host + '/flight/config/countFlights',
 			handleAs: "json",
 			load: function(response, ioArgs) {			    	
 		    	document.getElementById('flightData').innerHTML=response;
@@ -117,7 +114,7 @@
     	});
 	 
        	dojo.xhrGet({
-			url: 'http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight' + '/config/countFlightSegments',
+			url: window.location.protocol+ '//' + window.location.host + '/flight/config/countFlightSegments',
 			handleAs: "json",
 			load: function(response, ioArgs) {			    
 		    	document.getElementById('flightSegmentData').innerHTML=response;
@@ -129,7 +126,7 @@
        	
        	
     	dojo.xhrGet({
-			url: 'http://stackaa-booking-acmeair.apps.acme42.cp.fyre.ibm.com/booking' + '/config/countBookings',
+			url: window.location.protocol+ '//' + window.location.host + '/booking/config/countBookings',
 			handleAs: "json",
 			load: function(response, ioArgs) {	
 		    	document.getElementById('bookingData').innerHTML=response;
@@ -141,7 +138,7 @@
     	
     	dojo.xhrGet({
     		
-			url: 'http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight' + '/config/countAirports',
+			url: window.location.protocol+ '//' + window.location.host + '/flight/config/countAirports',
 			handleAs: "json",
 			load: function(response, ioArgs) {	
 		    	document.getElementById('airportData').innerHTML=response;
@@ -201,10 +198,10 @@
 		<table width="258">
 			<tr><td>Please Wait...</td></tr>
 		</table>
-		
+
 </div>
 </span>
-    
+
 <div id="main">
 	<br/>
 	<header>
@@ -224,13 +221,13 @@
 			<div id="toolbar5.loaddb" data-dojo-type="dijit.form.Button" data-dojo-props='showLabel:true' onClick="window.location='loader.html'">Load the database</div>
 			<div id="toolbar5.info" data-dojo-type="dijit.form.Button" data-dojo-props='showLabel:true' onClick="window.location='config.html'">Runtime Info</div>
 		</div>
-		
+
 		<div class="content">
 			<h1 style="margin: 15px 0 0 0;">Acme Air Configuration information</h1>
 			<script type="text/javascript">
 				getDBSizes();
 			</script> 
-			
+
 		  <h2> Database Information </h2>	
           <table border="1">
 		     <tr> <th>Entity</th> <th>Count</th></tr>
@@ -240,18 +237,18 @@
 	         <tr> <td>Flight Segments</td> <td><div id="flightSegmentData"></div></td></tr>
 	         <tr> <td>Airports</td> <td><div id="airportData"></div></td></tr>
           </table>
-			
+
 			<script type="text/javascript">
-				getRuntimeInformation('auth','http://stackaa-auth-acmeair.apps.acme42.cp.fyre.ibm.com/auth','');
+				getRuntimeInformation('auth','/auth','');
 				
-				getRuntimeInformation('booking','http://stackaa-booking-acmeair.apps.acme42.cp.fyre.ibm.com/booking','');
-				getActiveDataServiceInfo('booking','http://stackaa-booking-acmeair.apps.acme42.cp.fyre.ibm.com/booking','');
-				getRuntimeInformation('customer','','http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer');
-				getActiveDataServiceInfo('customer','','http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer');
-				getRuntimeInformation('flight','http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight','');
-				getActiveDataServiceInfo('flight','http://stackaa-flight-acmeair.apps.acme42.cp.fyre.ibm.com/flight','');
+				getRuntimeInformation('booking','/booking','');
+				getActiveDataServiceInfo('booking','/booking','');
+				getRuntimeInformation('customer','','/customer');
+				getActiveDataServiceInfo('customer','','/customer');
+				getRuntimeInformation('flight','/flight','');
+				getActiveDataServiceInfo('flight','/flight','');
 			</script>
-	
+
 			<h2>Auth Service </h2>	 
 			<div id="runtimeLoc_auth"></div>	
 			<h2>Booking Service </h2>	 
@@ -263,7 +260,7 @@
 			<h2>Flight Service </h2>	 
 			<div id="activeServiceLoc_flight"></div>
 			<div id="runtimeLoc_flight"></div>	
-			
+
 		</div>
 	</div>
 	<footer>
@@ -276,4 +273,4 @@
 
 <p>&nbsp;</p>
 </body>
-</html>
+</html> 

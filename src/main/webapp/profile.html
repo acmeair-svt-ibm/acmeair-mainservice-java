@@ -24,13 +24,12 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dijit/themes/dijit.css">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dojox/grid/resources/claroGrid.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  
+
   <script type="text/javascript" src="js/acmeair-common.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.7.1/dojo/dojo.js" djConfig="parseOnLoad: true"></script>
 
   <script>
 	dojo.require("dojo.parser");
-
 	dojo.require("dojo.cookie");
 	
 	dojo.require("dijit.form.TextBox");
@@ -57,7 +56,7 @@
 		    
     function loadCustomerProfileData(userid) {
 	    	dojo.xhrGet({
-				url: 'http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer' + '/byid/' + userid,
+				url: window.location.protocol + '//' + window.location.host + '/customer/byid/' + userid,
 				handleAs: "json",
                 headers: {
                     "Authorization" : "Bearer " + dojo.cookie("jwt_token")
@@ -119,7 +118,7 @@
 		}
     	
 		dojo.xhrPost({
-			url: 'http://stackaa-customer-acmeair.apps.acme42.cp.fyre.ibm.com/customer' + '/byid/' + userid,
+			url: window.location.protocol+ '//' + window.location.host + '/customer/byid/' + userid,
 			postData : dojo.toJson(customerData),
 			handleAs: "json",
 			headers: { "Content-Type": "application/json",
@@ -201,7 +200,7 @@
 			<div id="toolbar5.account" data-dojo-type="dijit.form.Button" data-dojo-props='showLabel:true' onClick="window.location='profile.html'">Account</div>
 			<div id="toolbar5.support" data-dojo-type="dijit.form.Button" data-dojo-props='showLabel:true' onClick="window.location='support.html'">Support</div>
 		</div>
-		
+
 		<div class="content">
       	<table>
       		<tr>
