@@ -61,7 +61,7 @@
 				returnDate: returnDate,
 				oneWay: oneWayChecked
 			},
-			url: window.location.protocol+ '//' + window.location.host + 'flight/queryflights',
+			url: window.location.protocol+ '//' + window.location.host + '/flight/queryflights',
 			handleAs: "json",
 			load: function(response, ioArgs) {
 				if (response.tripFlights.length == 0) {
