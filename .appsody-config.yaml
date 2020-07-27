@@ -1,2 +1,2 @@
 project-name: stackaa-main
-stack: default-route-openshift-image-registry.apps.acme42.cp.fyre.ibm.com/kabanero/java-openliberty:0.2
+stack: default-route-openshift-image-registry.apps.acmeair45.cp.fyre.ibm.com/kabanero/java-openliberty:0.2
