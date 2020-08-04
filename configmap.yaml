@@ -4,4 +4,4 @@ metadata:
   name: open-liberty-operator
   namespace: acmeair
 data:
-  defaultHostName: 'host-acmeair.apps.acmeair45.cp.fyre.ibm.com'
+  defaultHostName: 'apps.acmeair45.cp.fyre.ibm.com'

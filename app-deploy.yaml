@@ -58,7 +58,7 @@ spec:
   createKnativeService: false
   expose: true
   route:
-      host: 
+      host: "main"
       path: "/acmeair"
   env:
   - name: SECURE_SERVICE_CALLS
